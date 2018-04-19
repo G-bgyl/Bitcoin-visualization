@@ -1,0 +1,4 @@
+__pycache__
+dig_cur/
+secrets.py
+.DS_Store

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bitcoin - Price fluctuation</title>
+</head>
+<body>
+<h3> Let check the price fluctuation of Bitcoin! </h3>
+<i>Enter a year between 2013-2017:</i>
+<form action="/postentry" method="POST">
+    <p>Year: <input type="text" name="year"/></p>
+    <p><input type="submit" value="Submit"/></p>
+
+    {% if path is defined %}
+
+
+    <div>
+        <img src="/static/{{path}}"/>
+    </div>
+    {% else %}
+
+    {% endif %}
+</form>
+</body>
+</html>
