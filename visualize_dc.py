@@ -8,7 +8,8 @@ import pandas as pd
 from calendar import monthrange
 import pprint
 import matplotlib as mpl
-mpl.use('TkAgg')
+# mpl.use('TkAgg')
+mpl.use('Agg')
 import matplotlib.pyplot as plt
 import os
 DBNAME='digital_currency.db'
