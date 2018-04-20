@@ -8,7 +8,9 @@ import pandas as pd
 from calendar import monthrange
 import pprint
 import matplotlib as mpl
+# use TkAgg when debugging at local
 # mpl.use('TkAgg')
+# use Agg when launch on heroku
 mpl.use('Agg')
 import matplotlib.pyplot as plt
 import os

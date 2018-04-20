@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bitcoin - Price fluctuation</title>
+</head>
+<body>
+<h3> Let check the {{title}} of Bitcoin! </h3>
+{% if action == 'box_input' %}
+    <i>Enter a year between 2013-2017:</i>
+    <form action="/box_input" method="POST">
+        <p>Year: <input type="text" name="year"/></p>
+        <p><input type="submit" value="Submit"/></p>
+        <p><a href="/">go back</a></p>
+        {% if path is defined %}
+        <div>
+            <img src="/static/{{path}}"/>
+        </div>
+        {% else %}
+        {% endif %}
+
+    </form>
+{% endif %}
+
+{% if action == 'area_input' %}
+    <i>Enter a type, either 'bids' or 'asks':</i>
+    <form action="/area_input" method="POST">
+        <p>Type: <input type="text" name="type"/></p>
+        <p><input type="submit" value="Submit"/></p>
+        <p><a href="/">go back</a></p>
+        {% if path is defined %}
+        <div>
+            <img src="/static/{{path}}"/>
+        </div>
+        {% else %}
+        {% endif %}
+
+    </form>
+{% endif %}
+{% if action == 'bar_input' %}
+    <i>Enter a year between 2013-2017:</i>
+    <form action="/bar_input" method="POST">
+        <p>Year: <input type="text" name="year"/></p>
+        <p><input type="submit" value="Submit"/></p>
+        <p><a href="/">go back</a></p>
+        {% if path is defined %}
+        <div>
+            <img src="/static/{{path}}"/>
+        </div>
+        {% else %}
+        {% endif %}
+
+    </form>
+{% endif %}
+{% if action == 'line_input' %}
+    <i>Enter a year between 2013-2017:</i>
+    <form action="/line_input" method="POST">
+        <p>Year: <input type="text" name="year"/></p>
+        <p><input type="submit" value="Submit"/></p>
+        <p><a href="/">go back</a></p>
+        {% if path is defined %}
+        <div>
+            <img src="/static/{{path}}"/>
+        </div>
+        {% else %}
+        {% endif %}
+
+    </form>
+{% endif %}
+
+</body>
+</html>
