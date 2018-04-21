@@ -3,10 +3,34 @@ SI507 final project
 
 Your GitHub repo must contain a README.md file that gives an overview of your project, including:
 
-* Data sources used, including instructions for a user to access the data sources (e.g., API keys or client secrets needed, along with a pointer to instructions on how to obtain these and instructions for how to incorporate them into your program (e.g., secrets.py file format))
+## Data sources:
+You will need API key and API secrets from both [Coinbase](https://coinbase.com/settings/api) and [Okcoin](https://support.okcoin.com/hc/en-us/articles/360000715751-Create-API) after you log in to both platform.
+the format of ```secrets.py``` file:
 
-* Any other information needed to run the program (e.g., pointer to getting started info for plotly)
+```
+API_KEY_OKCOIN=''
+API_SECRET_OKCOIN=''
+API_KEY_COINBASE = ''
+API_SECRET_COINBASE = ''
+```
 
-* Brief description of how your code is structured, including the names of significant data processing functions (just the 2-3 most important functions--not a complete list) and class definitions. If there are large data structures (e.g., lists, dictionaries) that you create to organize your data for presentation, briefly describe them.
 
-* Brief user guide, including how to run the program and how to choose presentation options.
+## Code Structure:
+
+
+The ```dig_currency.py``` is used to retrieve data use API;
+The ```visualize_dc.py``` include functions to process and generate presentations of data;
+The ```app.py``` controls the flask structure and call codes from ```templates``` and ```statics``` directory.
+
+The important data processing functions are mainly in ```visualize_dc.py```. 
+
+* ```def boxplot(year)``` retrieve data from database and plot the price fluctuation of Bitcoin;
+* ```def line_chart(year)``` retrieve data from database and plot the trend of Bitcoin;
+* ```def area_depth(type)``` retrieve data from database and plot the current price depth of Bitcoin;
+* ```def rate_bar(year)``` retrieve data from database and plot the changing rate of Bitcoin.
+
+## Guide to run the program:
+
+Please download all the library that needed for the program listed in the ```requirement.txt```
+To run the program, please start the virtual environment and copy ```gunicorn app:app``` into terminal in Mac(That's all I know about) and go to [http://127.0.0.1:8000 ](http://127.0.0.1:8000) to run the interaction website!
+
