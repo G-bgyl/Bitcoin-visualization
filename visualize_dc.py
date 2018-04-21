@@ -16,58 +16,24 @@ import matplotlib.pyplot as plt
 import os
 DBNAME='digital_currency.db'
 
-'''
 
-CACHE_coinbase = 'coinbase.json'
-try:
-    cache_file = open(CACHE_coinbase, 'r')
-    cache_coinbase = cache_file.read()
-    CACHE_DICTION_coinbase = json.loads(cache_coinbase)
-    cache_file.close()
+# ---------------------------
+# This is a class for Bitcoin
+# ---------------------------
 
-# if there was no file, no worries. There will be soon!
-except:
-    CACHE_DICTION_coinbase = {}
+class digital_currency():
+    def __init__(self,name,price):
+        self.name=name
+        self.price=price
 
-CACHE_okcoin = 'okcoin.json'
-try:
-    with open(CACHE_okcoin, 'r') as cache_file:
-        cache_okcoin = cache_file.read()
-        CACHE_DICTION_okcoin = json.loads(cache_okcoin)
+    def __str__(self):
+        return 'The digital currency %s is currently %s $\n'%(self.name,self.price)
+bitcoin_=digital_currency('Bitcoin',87025)
+print(bitcoin_)
 
 
-# if there was no file, no worries. There will be soon!
-except:
-    CACHE_DICTION_okcoin = {}
 
 
-def main_get_data_from_twitter(begin_date,end_date):
-    # now = datetime.now(pytz.utc)
-    # youngest = max(dt for dt in datetimes if dt < now)
-    #
-    # ## first, look in the cache to see if we already have this data
-    # if unique_ident in CACHE_DICTION:
-    #     print("Getting cached data...")
-    #     return CACHE_DICTION[unique_ident]
-
-
-    #TODO: get a list of date in coinbase dataset ,and check if begindate and end date is include by this
-    if True:
-        pass
-
-    ## if not, fetch the data afresh, add it to the cache,
-    ## then write the cache to file
-    else:
-        print("Making a request for new data...")
-        # Make the request and cache the new data
-        for single_date in daterange(start_date, end_date):
-            pre_date = single_date.strftime("%Y-%m-%d")
-            pre_price = client.get_spot_price(currency=currency_code, date=pre_date)
-            sell_price = client.get_sell_price(currency=currency_code, date=pre_date)
-            buy_price = client.get_buy_price(currency=currency_code, date=pre_date)
-            coinbase_d_cur_his.append(
-                [pre_date, pre_price['base'], pre_price['currency'], pre_price['amount'], sell_price['amount'],
-                 buy_price['amount']])'''
 def boxplot(year):
     conn = sqlite3.connect('digital_currency.db')
     cur = conn.cursor()
@@ -78,8 +44,9 @@ def boxplot(year):
     conn.commit()
     boxplot = result.fetchall()
     conn.close()
-    print('print type of boxplot',type(boxplot))
+    # print('print type of boxplot',type(boxplot))
     return boxplot
+
 def boxplot_get_K_line_data(year,freq='Month'):
     conn = sqlite3.connect('digital_currency.db')
     cur = conn.cursor()
@@ -109,8 +76,8 @@ def boxplot_get_K_line_data(year,freq='Month'):
         for day in [1,m_length]:
             # print('year, month, day',year,month,day)
             stm='''select spot_price
-from Coinbase
-where year =%s and [month]=%s and [day]=%s;'''%(year,month,day)
+                  from Coinbase
+                  where year =%s and [month]=%s and [day]=%s;'''%(year,month,day)
             result = cur.execute(stm)
             first=result.fetchone()[0]
             month_data.append(first)
@@ -170,6 +137,8 @@ group by [month];
         rate=round(100*(avg_data[i][1]-avg_data[i-1][1])/avg_data[i-1][1],2)
         rate_data.append(rate)
     return rate_data
+
+
 if __name__=='__main__':
     currency='BTC'
     year = input("which year's data do you want to take a look at?")

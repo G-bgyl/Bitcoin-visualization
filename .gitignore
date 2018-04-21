@@ -1,3 +1,4 @@
 __pycache__
 dig_cur/
 .DS_Store
+secrets.py

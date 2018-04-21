@@ -90,11 +90,11 @@ def cache_data(coinbase_d_cur_his,okcoin_data):
     # ------------------------------------
     # cache data into csv file
     # ------------------------------------
-    # with open('coinbase.csv', 'w') as coinbase:  # , open('untrack_question.csv', 'w') as untrack_question
-    #     writer = csv.writer(coinbase)
-    #     writer.writerow(['time', 'digital_currency', 'currency','spot price','day','month','year'])
-    #     for row in coinbase_d_cur_his:
-    #         writer.writerow(row)
+    with open('coinbase.csv', 'w') as coinbase:  # , open('untrack_question.csv', 'w') as untrack_question
+        writer = csv.writer(coinbase)
+        writer.writerow(['time', 'digital_currency', 'currency','spot price','day','month','year'])
+        for row in coinbase_d_cur_his:
+            writer.writerow(row)
 
     with open('okcoin.csv', 'w') as okcoin:  # , open('untrack_question.csv', 'w') as untrack_question
         writer = csv.writer(okcoin)
@@ -102,6 +102,16 @@ def cache_data(coinbase_d_cur_his,okcoin_data):
         for line in okcoin_data:
             line.insert(1,)
             writer.writerow(line)
+
+def cached_data():
+    with open('coinbase.csv', 'r') as coinbase, open('coinbase_.json','w')as json_coinbase:
+        reader = csv.reader(coinbase)
+        next(reader)
+        coinbase_data = []
+        for r in reader:
+            coinbase_data.append([r[0],r[1],r[3]])
+            json_coinbase.write(json.dumps(coinbase_data))
+
 # ------------------------------------
 # read data from csv file into database
 # ------------------------------------
@@ -179,7 +189,7 @@ def create_dig_cur_db():
     conn.close()
 
 if __name__ == "__main__":
-
-    create_dig_cur_db()
+    cached_data()
+    # create_dig_cur_db()
     exit()
 
