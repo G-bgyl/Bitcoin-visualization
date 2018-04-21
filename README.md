@@ -1,7 +1,6 @@
 # Bitcoin-visualization
 SI507 final project
 
-Your GitHub repo must contain a README.md file that gives an overview of your project, including:
 
 ## Data sources:
 You will need API key and API secrets from both [Coinbase](https://coinbase.com/settings/api) and [Okcoin](https://support.okcoin.com/hc/en-us/articles/360000715751-Create-API) after you log in to both platform.
